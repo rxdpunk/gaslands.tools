@@ -617,3 +617,32 @@ input[type="number"].editable-input::-webkit-outer-spin-button {
 .site-footer a:hover {
   color: var(--text-primary);
 }
+/* Garage: readable labels, native touch controls and a two-pane sponsor guide. */
+body{background-image:none;font-family:system-ui,sans-serif}
+.main-content{width:min(100%,1050px)}
+.pit-panel,.pit-mode:not(:empty){padding:clamp(12px,2vw,24px);border:1px solid var(--smoke);border-radius:10px;margin:12px 0;background:var(--soot-mid);text-align:left}
+.pit-panel h2,.pit-mode h2{font-size:1.25rem}
+.pit-panel p,.pit-mode p,.pit-panel dd{line-height:1.5;margin:.45em 0 .8em}
+summary{cursor:pointer;color:var(--amber);padding:12px 4px;font-weight:650}
+.sponsor-guide{display:grid;grid-template-columns:minmax(160px,1fr) 2fr;gap:16px}
+.sponsor-options{display:grid;max-height:23rem;overflow:auto;align-content:start}
+.sponsor-options button{text-align:left}
+.sponsor-detail{background:var(--soot);padding:16px;border-radius:8px}
+.sponsor-detail h4{margin-top:12px}.sponsor-detail dt{font-weight:bold;margin-top:8px}
+.pit-nav{display:flex;gap:6px;flex-wrap:wrap}.pit-nav button{flex:1}
+button[aria-pressed=true]{border-color:var(--amber);color:var(--amber);background:var(--soot-light)}
+button:focus-visible,summary:focus-visible,select:focus-visible,input:focus-visible{outline:3px solid var(--blue-bright);outline-offset:2px}
+[hidden]{display:none!important}
+.counter{display:grid;grid-template-columns:1fr 44px 3ch 44px;align-items:center;gap:8px;margin:6px 0}.counter output{text-align:center}
+.pit-mode form{display:grid;gap:8px}.pit-mode label{display:grid}.pit-mode li{margin:12px 0 12px 20px}
+.pit-mode input,.pit-mode select{padding:8px;font:inherit}
+[data-theme=light]{--amber:#754700;--green:#176736;--blue-bright:#075783}
+@media(max-width:650px){
+ .sponsor-guide{grid-template-columns:1fr}.sponsor-options{grid-template-columns:1fr 1fr;max-height:9rem;gap:3px}
+ .main-content{padding:12px 8px}.vehicles-grid,.vehicle-card{min-width:0;max-width:100%}
+ button,summary,select,.btn,.budget-presets button{min-height:44px}
+ input,textarea,select,.editable-input{font-size:16px!important;min-width:0;max-width:100%}
+ .budget-bar{gap:4px;padding:8px}.budget-bar .stat-pill{padding:4px 7px}
+ .add-item-row,.stat-grid{flex-wrap:wrap}.pit-panel{margin:8px 0}.pit-nav{margin-bottom:10px}
+}
+.check-note{font-size:.9rem;color:var(--text-muted);margin:10px 0}.pit-mode a{color:var(--amber)}.sponsor-detail dd{margin-inline-start:0}
