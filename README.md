@@ -1,8 +1,8 @@
-# Gaslands.tools
+# Pit Garage
 
 A browser-based team roster builder and manager for [Gaslands Refuelled](https://planetsmashergames.com/gaslands/about/). Build teams, add vehicles, equip weapons/upgrades/perks, track budgets, and export styled roster sheets.
 
-**Live site:** [nulvox.github.io/gaslands.tools](https://nulvox.github.io/gaslands.tools)
+**Open Pit Garage:** [rxdpunk.github.io/gaslands.tools](https://rxdpunk.github.io/gaslands.tools/). Works in your phone browser. See the [game-night guide](GAME-NIGHT.md) for race tracking and printable dashboard inserts.
 
 ## Features
 
