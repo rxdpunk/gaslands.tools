@@ -13,6 +13,7 @@ build: clean
 	@[ -f web/index.html ] && cp web/index.html docs/ || true
 	@[ -d web/css ] && find web/css -name '*.css' | head -1 > /dev/null 2>&1 && cp -r web/css docs/ || true
 	@[ -d web/js ] && find web/js -name '*.js' | head -1 > /dev/null 2>&1 && cp -r web/js docs/ || true
+	@cp -r web/printables docs/
 
 test:
 	@go test ./internal/... 2>&1 || { \
