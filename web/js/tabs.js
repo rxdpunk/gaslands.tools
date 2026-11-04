@@ -64,7 +64,7 @@ var Tabs = (function () {
     var closeBtn = document.createElement("span");
     closeBtn.className = "tab-close";
     closeBtn.textContent = "\u00D7";
-    closeBtn.title = "Close tab";
+    closeBtn.title = "Delete saved team";
     closeBtn.addEventListener("click", function (e) {
       e.stopPropagation();
       closeTab(teamId);
@@ -89,9 +89,9 @@ var Tabs = (function () {
 
   function closeTab(teamId) {
     var team = teams.get(teamId);
-    var hasData = team && team.vehicles && team.vehicles.length > 0;
 
-    if (hasData && !confirm("Close this team? Unsaved changes will be lost.")) {
+
+    if (team && !confirm("Delete this saved team from this device?")) {
       return;
     }
 
@@ -174,9 +174,9 @@ var Tabs = (function () {
     var content = document.getElementById("main-content");
     content.innerHTML =
       '<div class="empty-state">' +
-      "<h2>WELCOME TO GASLANDS.TOOLS</h2>" +
-      "<p>Build and manage your Gaslands Refuelled team rosters.<br>" +
-      "Select a sponsor, set your budget, add vehicles, and equip them for the wasteland.</p>" +
+      "<h2>Build your first team</h2>" +
+      "<p>Set a can budget, choose your vehicles, then take them to race day.<br>" +
+      "Teams save in this browser. Share a roster link to send a copy to another phone.</p>" +
       '<button class="create-btn" id="empty-create-btn">CREATE TEAM</button>' +
       "</div>";
 

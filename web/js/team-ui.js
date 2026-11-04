@@ -49,6 +49,7 @@ var TeamUI = (function () {
 
     // Name input
     var nameInput = document.createElement("input");
+    nameInput.setAttribute("aria-label","Team name");
     nameInput.type = "text";
     nameInput.className = "editable-input name-input";
     nameInput.placeholder = "TEAM NAME";
@@ -59,56 +60,7 @@ var TeamUI = (function () {
     });
     header.appendChild(nameInput);
 
-    // Sponsor row
-    var sponsorRow = document.createElement("div");
-    sponsorRow.className = "sponsor-row";
-
-    var sponsorLabel = document.createElement("label");
-    sponsorLabel.textContent = "Sponsor:";
-    sponsorRow.appendChild(sponsorLabel);
-
-    var sponsorSelect = document.createElement("select");
-    sponsorSelect.className = "editable-input";
-    sponsorSelect.style.width = "200px";
-
-    var noneOpt = document.createElement("option");
-    noneOpt.value = "";
-    noneOpt.textContent = "— None —";
-    sponsorSelect.appendChild(noneOpt);
-
-    var sponsors = getSponsorsData();
-    sponsors.forEach(function (s) {
-      var opt = document.createElement("option");
-      opt.value = s.Name;
-      opt.textContent = s.Name;
-      if (team.sponsor && team.sponsor.name === s.Name && !team.sponsor.isCustom) {
-        opt.selected = true;
-      }
-      sponsorSelect.appendChild(opt);
-    });
-
-    var customOpt = document.createElement("option");
-    customOpt.value = "__custom__";
-    customOpt.textContent = "Custom...";
-    if (team.sponsor && team.sponsor.isCustom) {
-      customOpt.selected = true;
-    }
-    sponsorSelect.appendChild(customOpt);
-
-    sponsorSelect.addEventListener("change", function () {
-      if (sponsorSelect.value === "__custom__") {
-        team.sponsor = { name: "Custom", isCustom: true };
-      } else if (sponsorSelect.value === "") {
-        team.sponsor = { name: "" };
-      } else {
-        team.sponsor = { name: sponsorSelect.value };
-      }
-      refreshTeam(team);
-    });
-
-    sponsorRow.appendChild(sponsorSelect);
-    header.appendChild(sponsorRow);
-
+    Night.sponsor(header,team,getSponsorsData(),selection=>{ team.sponsor=selection; refreshTeam(team); });
     // Action buttons row
     var actionsRow = document.createElement("div");
     actionsRow.style.cssText = "display:flex;gap:8px;margin-top:12px;flex-wrap:wrap";
@@ -153,7 +105,7 @@ var TeamUI = (function () {
     });
     actionsRow.appendChild(printBtn);
 
-    header.appendChild(actionsRow);
+    const tools=document.createElement("details");const title=document.createElement("summary");title.textContent="Share, print & backup";tools.append(title,actionsRow);header.append(tools);
 
     container.appendChild(header);
   }
@@ -184,6 +136,7 @@ var TeamUI = (function () {
     budgetInput.style.border = "none";
     budgetInput.style.borderBottom = "1px solid var(--smoke)";
     budgetInput.value = team.budget;
+    budgetInput.setAttribute("aria-label","Team budget in cans");
     budgetInput.min = 0;
     budgetInput.addEventListener("change", function () {
       team.budget = parseInt(budgetInput.value) || 0;
@@ -274,6 +227,7 @@ var TeamUI = (function () {
     addRow.style.marginBottom = "16px";
 
     var vehicleSelect = document.createElement("select");
+    vehicleSelect.setAttribute("aria-label","Add vehicle");
     vehicleSelect.className = "editable-input";
 
     var defaultOpt = document.createElement("option");
@@ -334,6 +288,7 @@ var TeamUI = (function () {
 
     var textarea = document.createElement("textarea");
     textarea.className = "editable-input";
+    textarea.setAttribute("aria-label","Team notes");
     textarea.placeholder = "Strategy, tactics, lore...";
     textarea.value = team.notes || "";
     textarea.rows = 4;
@@ -355,7 +310,7 @@ var TeamUI = (function () {
 
     var title = document.createElement("div");
     title.className = "warning-title";
-    title.textContent = "Warnings";
+    title.textContent = "Roster checks";
     panel.appendChild(title);
 
     warnings.forEach(function (w) {
@@ -374,10 +329,12 @@ var TeamUI = (function () {
     content.innerHTML = "";
 
     renderTeamHeader(content, team);
+    const checks=document.createElement("p");checks.className="check-note";checks.textContent="Roster checks cover cans, slots and some perk restrictions. Check sponsor abilities, weapon facings and scenario limits before play.";content.append(checks);
     renderBudgetBar(team, warnings);
     renderValidationWarnings(content, warnings);
     renderVehicleList(content, team);
     renderTeamNotes(content, team);
+    Night.nav(content,team,getVehicleTypesData());
   }
 
   // Print via HTML export

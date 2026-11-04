@@ -616,7 +616,8 @@ var VehicleUI = (function () {
   function addCostRow(container, label, cost) {
     var row = document.createElement("div");
     row.className = "cost-row";
-    row.innerHTML = "<strong>" + label + "</strong><span>" + cost + " Cans</span>";
+    const name=document.createElement("strong"), amount=document.createElement("span");
+    name.textContent=label; amount.textContent=cost+" Cans"; row.append(name,amount);
     container.appendChild(row);
   }
 
