@@ -3,27 +3,56 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Gaslands.tools — Team Roster Builder</title>
+  <title>Pit Garage · Build. Race. Repeat.</title>
+  <meta name="theme-color" content="#171c20">
+  <meta name="description" content="Your Gaslands: Refuelled pit crew. Build a team, track the race and keep your season rolling.">
   <link rel="stylesheet" href="css/style.css">
   <link rel="stylesheet" href="css/print.css">
 </head>
 <body>
-  <button class="theme-toggle" id="theme-toggle" title="Toggle light/dark mode">&#9788;</button>
-
-  <div class="app-header">
-    <h1>PIT GARAGE</h1>
-    <div class="subtitle">Gaslands: Refuelled · Team builder</div>
-  </div>
+  <a class="skip-link" href="#main-content">Skip to your garage</a>
+  <header class="app-header">
+    <div class="masthead">
+      <div class="brand-lockup">
+        <svg class="brand-mark" viewBox="0 0 48 48" aria-hidden="true"><path fill="currentColor" d="M4 4h40v40H4z"/><path fill="#171c20" d="M12 13h16l8 8-8 8h-8v8h-8zm8 7v3h7l2-1.5-2-1.5z"/></svg>
+        <div><h1>PIT GARAGE<span class="brand-period">.</span></h1><div class="subtitle">Gaslands: Refuelled / Team workshop</div></div>
+      </div>
+      <button class="theme-toggle" id="theme-toggle" title="Switch to light mode" aria-label="Switch to light mode">Daylight</button>
+    </div>
+    <div class="garage-banner">
+      <div class="banner-copy"><span class="eyebrow">Your crew. Your build.</span><p>BUILT FOR<br><em>THE NEXT RACE.</em></p><span class="banner-caption">Build your team. Track the carnage.</span></div>
+      <svg class="garage-art" viewBox="0 0 620 200" role="img" aria-label="Technical illustration of an armored race car">
+        <defs><pattern id="grid" width="24" height="24" patternUnits="userSpaceOnUse"><path d="M24 0H0V24" fill="none" stroke="#394249" stroke-width=".6"/></pattern></defs>
+        <path fill="url(#grid)" d="M0 0h620v200H0z"/>
+        <g fill="none" stroke="#64727b" stroke-width="1"><path d="M58 155H565M65 25v150M550 25v150M80 169h455M80 165v8m455-8v8M300 12v170" stroke-dasharray="4 6"/><path d="M457 38h90M547 38v38"/></g>
+        <g stroke="#ece9df" stroke-width="2.5" stroke-linejoin="round">
+          <path d="m94 116 39-13 48-47 158-3 74 43 96 14 18 37H89z" fill="#252e35"/>
+          <path d="m190 63-32 39h96V61zm76-2v41h117l-49-41z" fill="#171c20"/>
+          <path d="m100 111 154-1 105 1 138 13-3 18H100z" fill="#ff703d" stroke="#ff703d"/>
+          <path d="M270 113h66v31h-66z" fill="#ece9df" stroke="none"/>
+          <path d="m278 119 13 0-6 19h-6m18-19h14v19h-14z" fill="none" stroke="#171c20" stroke-width="3"/>
+          <path d="M185 55h159M220 48h112m-54-1V34h43v14M309 36h61v7h-61M94 107H76v42h20M509 112h30v34h-18" fill="#252e35"/>
+          <path d="M118 148a36 36 0 0 1 72 0m222 0a36 36 0 0 1 72 0" fill="#171c20"/>
+          <circle cx="154" cy="148" r="27" fill="#171c20"/><circle cx="448" cy="148" r="27" fill="#171c20"/>
+          <circle cx="154" cy="148" r="13" fill="#394249"/><circle cx="448" cy="148" r="13" fill="#394249"/>
+          <path d="m150 144 8 8m-8 0 8-8m286 0 8 8m-8 0 8-8M210 72l32 22m34-22 34 22m17-22 34 22" stroke-width="1.5"/>
+          <path d="m93 111-11-16h-12m443 9 12-12h23M344 56l25-10h27v9h-37" fill="none"/>
+        </g>
+        <g fill="#b4bfc6" font-family="monospace" font-size="9" letter-spacing="2"><text x="80" y="26">GARAGE / 01</text><text x="451" y="31">RACE SPEC</text><text x="213" y="191">ASSEMBLE • EQUIP • DEPLOY</text></g>
+        <g fill="#ff703d"><path d="m563 106 15-15h10l-15 15zm0 19 15-15h10l-15 15zm0 19 15-15h10l-15 15z"/><circle cx="65" cy="155" r="3"/></g>
+      </svg>
+    </div>
+  </header>
 
   <div class="tab-bar" id="tab-bar">
-    <button class="tab-new" id="tab-new" title="New Team">+</button>
+    <button class="tab-new" id="tab-new" title="New Team" aria-label="Create a new team">+ New team</button>
   </div>
 
   <div class="budget-bar" id="budget-bar" style="display:none"></div>
 
-  <div class="main-content" id="main-content">
+  <main class="main-content" id="main-content" tabindex="-1">
     <div id="loading-status" class="loading-status">Opening your garage…</div>
-  </div>
+  </main>
 
   <footer class="site-footer">
     <a href="https://github.com/nulvox/gaslands.tools" target="_blank" rel="noopener">gaslands.tools</a>
