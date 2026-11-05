@@ -29,8 +29,10 @@
   function updateToggleLabel(theme) {
     var btn = document.getElementById("theme-toggle");
     if (btn) {
-      btn.textContent = theme === "light" ? "\u263E" : "\u2606";
+      btn.textContent = theme === "light" ? "Night mode" : "Daylight";
       btn.title = theme === "light" ? "Switch to dark mode" : "Switch to light mode";
+      btn.setAttribute("aria-label", btn.title);
+      document.querySelector('meta[name="theme-color"]')?.setAttribute("content",theme === "light" ? "#eeeae1" : "#171c20");
     }
   }
 
